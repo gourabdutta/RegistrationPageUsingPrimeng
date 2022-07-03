@@ -1,0 +1,59 @@
+<form [formGroup]="registerform"(ngSubmit)="OnSave(emp)">
+  <p-panel>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="ui-grid-row">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-6">
+            <span class="p-float-label">
+              <input id="float-input" type="text" [(ngModel)]="emp.firstName" formControlName="firstname" pInputText> 
+              <label for="float-input">firstName</label>
+          </span>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+          <span class="p-float-label">
+            <input id="float-input" type="text" [(ngModel)]="emp.lastName" formControlName="lastName" pInputText> 
+            <label for="float-input">lastName</label>
+        </span>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+          <span class="p-float-label">
+            <input id="float-input" type="text" [(ngModel)]="emp.address" formControlName="address" pInputText> 
+            <label for="float-input">Address</label>
+        </span>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+          <p-calendar [(ngModel)]="emp.dob" name="dob" [showIcon]="true" formControlName="dob" inputId="icon"></p-calendar>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+            <p-dropdown [options]="cities"  [(ngModel)]="emp.city" name="city" formControlName="city" placeholder="Select a City" optionLabel="name"
+            [showClear]="true"></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-6">
+          <div *ngFor="let category of categories" class="p-field-checkbox">
+            <p-radioButton [inputId]="category.key" [value]="category" [(ngModel)]="emp.gender" formControlName="gender"
+              ></p-radioButton>
+            <label [for]="category.key">{{category.name}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-6">
+          <button pButton type="submit" label="Submit"></button>
+        </div>
+        <div class="ui-grid-col-4"></div>
+      </div>
+    </div>
+  </p-panel>
+</form>
